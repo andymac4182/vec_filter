@@ -1,16 +1,35 @@
 use std::convert::TryInto;
 use crate::StructMatcher;
 
+/// An enumeration of Abstract Syntax Tree (AST) nodes representing various query operations.
+/// P: The generic type parameter representing the field type in the AST.
 #[derive(Debug, PartialEq, Clone)]
 pub enum AST<P> {
+    /// Represents an equality operation: field == value.
     Equals { field: P, value: Value },
+
+    /// Represents an inequality operation: field != value.
     NotEquals { field: P, value: Value },
+
+    /// Represents a containment operation: field contains value.
     Contains { field: P, value: Value },
+
+    /// Represents a greater-than operation: field > value.
     GreaterThan { field: P, value: Value },
+
+    /// Represents a less-than operation: field < value.
     LessThan { field: P, value: Value },
+
+    /// Represents a greater-than-or-equal-to operation: field >= value.
     GreaterThanEqualTo { field: P, value: Value },
+
+    /// Represents a less-than-or-equal-to operation: field <= value.
     LessThanEqualTo { field: P, value: Value },
+
+    /// Represents a logical AND operation between two AST nodes.
     And(Box<AST<P>>, Box<AST<P>>),
+
+    /// Represents a logical OR operation between two AST nodes.
     Or(Box<AST<P>>, Box<AST<P>>),
 }
 

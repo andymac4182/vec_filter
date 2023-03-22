@@ -23,7 +23,17 @@ pub trait StructMatcher<P>: Sized {
             AST::And(_, _) | AST::Or(_, _) => self.matches_and_or(ast),
         }
     }
+}
 
+trait StructMatcherExt<P>: StructMatcher<P> {
+    fn internal_matches_ast(&self, ast: &AST<P>) -> bool;
+
+    fn matches_contains(&self, field: &P, value: &Value) -> bool;
+
+    fn matches_and_or(&self, ast: &AST<P>) -> bool;
+}
+
+impl<T: StructMatcher<P>, P> StructMatcherExt<P> for T {
     fn internal_matches_ast(&self, ast: &AST<P>) -> bool {
         match ast {
             AST::Equals { field, value } => self.get_property_value(field) == Some(value.clone()),
