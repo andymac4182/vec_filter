@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.2.0 (2023-03-22)
+
 ## 0.1.0 (2023-03-22)
 
 Initial Release
@@ -13,7 +15,7 @@ Initial Release
 
 <csr-read-only-do-not-edit/>
 
- - 11 commits contributed to the release.
+ - 12 commits contributed to the release.
  - 0 commits were understood as [conventional](https://www.conventionalcommits.org).
  - 0 issues like '(#ID)' were seen in commit messages
 
@@ -24,6 +26,7 @@ Initial Release
 <details><summary>view details</summary>
 
  * **Uncategorized**
+    - Release vec_filter v0.1.0 ([`8a3b195`](https://github.com/andymac4182/vec_filter/commit/8a3b1950a561ddb2b04b19402fcafac664c50d6b))
     - Release vec_filter_derive v0.1.0, vec_filter v0.1.0 ([`142c71b`](https://github.com/andymac4182/vec_filter/commit/142c71bda5082da35ec0ad6bf0bbee3221195b3b))
     - Release vec_filter_derive v0.1.0, vec_filter v0.1.0 ([`cf0d389`](https://github.com/andymac4182/vec_filter/commit/cf0d3891a0e2c84e1eaac708b40118b79b576c79))
     - Release vec_filter_derive v0.1.0, vec_filter v0.1.0 ([`900d870`](https://github.com/andymac4182/vec_filter/commit/900d870e0acebcbda6727adf412da5e84f7f5ea4))

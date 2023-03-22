@@ -8,6 +8,7 @@ license = "Apache-2.0"
 repository = "https://github.com/andymac4182/vec_filter"
 homepage = "https://github.com/andymac4182/vec_filter"
 keywords = ["vec", "filter", "ast"]
+readme = "../README.md"
 
 [lib]
 proc-macro = true

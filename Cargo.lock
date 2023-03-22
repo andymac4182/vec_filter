@@ -18,7 +18,6 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 name = "example"
 version = "0.1.0"
 dependencies = [
- "rstest",
  "vec_filter",
 ]
 
@@ -238,9 +237,10 @@ checksum = "e5464a87b239f13a63a501f2701565754bae92d243d4bb7eb12f6d57d2269bf4"
 
 [[package]]
 name = "vec_filter"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "nom",
+ "rstest",
  "vec_filter_derive",
 ]
 
