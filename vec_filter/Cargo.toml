@@ -15,4 +15,4 @@ rstest = "0.17.0"
 
 [dependencies]
 nom = "7.0.0"
-vec_filter_derive = { version = "^0.1.0", path = "../vec_filter_derive" }
+vec_filter_derive = { version = "^0.1.1", path = "../vec_filter_derive" }
