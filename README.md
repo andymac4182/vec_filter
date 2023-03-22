@@ -38,20 +38,42 @@ struct Person {
 ```
 
 ### Query Syntax
-
 Vec Filter supports the following operators:
 
--   `\==`: Equals
+-   `==`: Equals
 -   `!=`: Not equals
+-   `>`: Greater Than
+-   `>=`: Greater than or equal to
+-   `<`: Less than
+-   `<=`: Less than or equal to
 -   `in`: Contains (for strings and vectors of strings)
 
-You can also use logical operators `&&` (AND) and `||` (OR) to combine conditions.
+You can also use logical operators `&&` (AND) and `||` (OR) to combine conditions. 
+
+#### Parentheses
+To set the precedence of the operations, use parentheses. Expressions enclosed in parentheses will be evaluated first. If you want to group conditions, you can use parentheses to create more complex queries.
+
+For example:
+
+((age >= 25) && (interests in ["hiking"])) || (name == "Alice"): This query will match items where the age is greater than or equal to 25 and the interests contain "hiking", or the name is equal to "Alice".
+(name == "Alice") || ((age < 30) && (interests in ["cooking"])): This query will match items where the name is equal to "Alice", or the age is less than 30 and the interests contain "cooking".
+By using parentheses, you can build complex queries that combine multiple conditions with different levels of precedence to achieve precise filtering.
+
+#### Query Examples
+* `name == "John Doe"`
+* `age != 30`
+* `age == 25 && name != "Alice"`
+* `role in ["admin", "manager"]`
+* `salary > 50000 || role == "developer"`
+* `(name == "Alice" || name == "Bob") && age > 20`
+* `age < 18 && (role == "intern" || role == "student")`
+* `email == "johndoe@example.com" || (role == "manager" && department == "HR")`
+* `age >= 30 && (role in ["team_lead", "manager"] || department != "IT")`
+* `((name == "Alice" || name == "Bob") && department == "Sales") || (age > 35 && role == "manager")`
 
 ### Example
 
 Let's see how to filter a vector of `Person` structs using Vec Filter.
-
-rustCopy code
 
 ```rust
 use vec_filter::{Filterable, AST};

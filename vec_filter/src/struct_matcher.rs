@@ -5,12 +5,18 @@ pub trait StructProperties: FromStr {
     fn valid_fields() -> Vec<&'static str>;
 }
 
-pub trait vec_filter<P>: Sized {
+pub trait StructMatcher<P>: Sized {
     fn get_property_value(&self, property: &P) -> Option<Value>;
+
 
     fn matches_ast(&self, ast: &AST<P>) -> bool {
         match ast {
-            AST::Equals { field: _, value: _ } | AST::NotEquals { field: _, value: _ } => {
+            AST::Equals { field: _, value: _ }
+            | AST::NotEquals { field: _, value: _ }
+            | AST::GreaterThan { field: _, value: _ }
+            | AST::LessThan { field: _, value: _ }
+            | AST::GreaterThanEqualTo { field: _, value: _ }
+            | AST::LessThanEqualTo { field: _, value: _ } => {
                 self.internal_matches_ast(ast)
             }
             AST::Contains { field, value } => self.matches_contains(field, value),
@@ -23,6 +29,26 @@ pub trait vec_filter<P>: Sized {
             AST::Equals { field, value } => self.get_property_value(field) == Some(value.clone()),
             AST::NotEquals { field, value } => {
                 self.get_property_value(field) != Some(value.clone())
+            }
+            AST::GreaterThan { field, value } => {
+                self.get_property_value(field)
+                    .map(|v| v > value.clone())
+                    .unwrap_or(false)
+            }
+            AST::LessThan { field, value } => {
+                self.get_property_value(field)
+                    .map(|v| v < value.clone())
+                    .unwrap_or(false)
+            }
+            AST::GreaterThanEqualTo { field, value } => {
+                self.get_property_value(field)
+                    .map(|v| v >= value.clone())
+                    .unwrap_or(false)
+            }
+            AST::LessThanEqualTo { field, value } => {
+                self.get_property_value(field)
+                    .map(|v| v <= value.clone())
+                    .unwrap_or(false)
             }
             _ => false,
         }

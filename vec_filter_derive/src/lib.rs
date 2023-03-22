@@ -77,7 +77,7 @@ fn impl_filterable(ast: &DeriveInput) -> TokenStream {
             }
         }
 
-        impl vec_filter::vec_filter<#properties_name> for #name {
+        impl vec_filter::StructMatcher<#properties_name> for #name {
             fn get_property_value(&self, property: &#properties_name) -> Option<vec_filter::Value> {
                 match property {
                     #(#get_property_value_match_arms)*

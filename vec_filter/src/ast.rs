@@ -1,17 +1,21 @@
 use std::convert::TryInto;
-use crate::vec_filter;
+use crate::StructMatcher;
 
 #[derive(Debug, PartialEq, Clone)]
 pub enum AST<P> {
     Equals { field: P, value: Value },
     NotEquals { field: P, value: Value },
     Contains { field: P, value: Value },
+    GreaterThan { field: P, value: Value },
+    LessThan { field: P, value: Value },
+    GreaterThanEqualTo { field: P, value: Value },
+    LessThanEqualTo { field: P, value: Value },
     And(Box<AST<P>>, Box<AST<P>>),
     Or(Box<AST<P>>, Box<AST<P>>),
 }
 
 impl<P> AST<P> {
-    pub fn apply<F: vec_filter<P> + Clone>(&self, items: &[F]) -> Vec<F> {
+    pub fn apply<F: StructMatcher<P> + Clone>(&self, items: &[F]) -> Vec<F> {
         items
             .iter()
             .filter(|item| item.matches_ast(self))
@@ -20,7 +24,7 @@ impl<P> AST<P> {
     }
 }
 
-#[derive(Debug, PartialEq, Clone)]
+#[derive(Debug, PartialEq, PartialOrd, Clone)]
 pub enum Value {
     String(String),
     Int(i32),

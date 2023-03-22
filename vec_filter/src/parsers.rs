@@ -73,6 +73,22 @@ fn parse_ast<P: StructProperties>(input: &str) -> IResult<&str, AST<P>> {
             |(field, _, _, _, value)| AST::NotEquals { field, value },
         ),
         map(
+            tuple((parse_field, space0, tag(">"), space0, parse_value)),
+            |(field, _, _, _, value)| AST::GreaterThan { field, value },
+        ),
+        map(
+            tuple((parse_field, space0, tag(">="), space0, parse_value)),
+            |(field, _, _, _, value)| AST::GreaterThanEqualTo { field, value },
+        ),
+        map(
+            tuple((parse_field, space0, tag("<"), space0, parse_value)),
+            |(field, _, _, _, value)| AST::LessThan { field, value },
+        ),
+        map(
+            tuple((parse_field, space0, tag("<="), space0, parse_value)),
+            |(field, _, _, _, value)| AST::LessThanEqualTo { field, value },
+        ),
+        map(
             tuple((
                 parse_field,
                 space0,

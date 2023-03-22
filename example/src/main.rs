@@ -59,6 +59,10 @@ mod tests {
     #[case::interests_hiking_age_25("(interests in [\"hiking\"]) && (age == 25)", vec![2])]
     #[case::name_equals_alice_interests_hiking_age_20("((name == \"Alice\") && (interests in [\"hiking\"])) || (age == 20)", vec![0, 1])]
     #[case::interests_hiking_age_20_or_25("(interests in [\"hiking\"]) && ((age == 20) || (age == 25))", vec![2])]
+    #[case::age_greater_than_25("age > 25", vec![0])]
+    #[case::age_less_than_25("age < 25", vec![1])]
+    #[case::age_greater_than_equal_to_25("age >= 25", vec![0, 2])]
+    #[case::age_less_than_equal_to_25("age <= 25", vec![1, 2])]
     fn test_filtering(#[case] input: &str, #[case] expected_indices: Vec<usize>) {
         let alice = Person {
             name: "Alice".to_string(),
