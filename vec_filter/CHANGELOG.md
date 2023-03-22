@@ -13,7 +13,7 @@ Initial Release
 
 <csr-read-only-do-not-edit/>
 
- - 10 commits contributed to the release.
+ - 11 commits contributed to the release.
  - 0 commits were understood as [conventional](https://www.conventionalcommits.org).
  - 0 issues like '(#ID)' were seen in commit messages
 
@@ -24,6 +24,7 @@ Initial Release
 <details><summary>view details</summary>
 
  * **Uncategorized**
+    - Release vec_filter_derive v0.1.0, vec_filter v0.1.0 ([`142c71b`](https://github.com/andymac4182/vec_filter/commit/142c71bda5082da35ec0ad6bf0bbee3221195b3b))
     - Release vec_filter_derive v0.1.0, vec_filter v0.1.0 ([`cf0d389`](https://github.com/andymac4182/vec_filter/commit/cf0d3891a0e2c84e1eaac708b40118b79b576c79))
     - Release vec_filter_derive v0.1.0, vec_filter v0.1.0 ([`900d870`](https://github.com/andymac4182/vec_filter/commit/900d870e0acebcbda6727adf412da5e84f7f5ea4))
     - Update changelog ([`1aef4ec`](https://github.com/andymac4182/vec_filter/commit/1aef4eca2c61ddba0f2a30ccb70025b6ccfff01e))
