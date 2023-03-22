@@ -7,11 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 0.2.0 (2023-03-22)
 
+Test
+
 ### Commit Statistics
 
 <csr-read-only-do-not-edit/>
 
- - 3 commits contributed to the release.
+ - 4 commits contributed to the release.
  - 0 commits were understood as [conventional](https://www.conventionalcommits.org).
  - 0 issues like '(#ID)' were seen in commit messages
 
@@ -22,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <details><summary>view details</summary>
 
  * **Uncategorized**
+    - Adjusting changelogs prior to release of vec_filter_derive v0.1.1, vec_filter v0.2.0 ([`92e6ae6`](https://github.com/andymac4182/vec_filter/commit/92e6ae6a3fa68cf02697b8776106944f3a856a05))
     - Update changelog ([`aed0969`](https://github.com/andymac4182/vec_filter/commit/aed0969236aa011b155bd796fa7d4ba6746e2249))
     - Move tests ([`6cc93ef`](https://github.com/andymac4182/vec_filter/commit/6cc93ef95897d0ce1cdcf994d2b29082ff025d9b))
     - Adjusting changelogs prior to release of vec_filter v0.2.0 ([`2b6deef`](https://github.com/andymac4182/vec_filter/commit/2b6deef2ea9635ca5e1b3e1806a67d030faf2be8))
