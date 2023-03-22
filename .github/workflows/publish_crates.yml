@@ -1,0 +1,42 @@
+name: Publish vec_filter and vec_filter_derive crates
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+
+      - name: Install cargo-release
+        run: cargo install cargo-release
+
+      - name: Release vec_filter crate
+        working-directory: vec_filter
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          cargo release --execute minor --no-dev-version --no-confirm --skip-publish --skip-push --token ${{ secrets.CRATES_IO_API_TOKEN }}
+
+      - name: Release vec_filter_derive crate
+        working-directory: vec_filter_derive
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          cargo release --execute minor --no-dev-version --no-confirm --skip-publish --skip-push --token ${{ secrets.CRATES_IO_API_TOKEN }}
+
+      - name: Push changes
+        run: |
+          git remote set-url origin https://${{ secrets.GH_TOKEN }}@github.com/USERNAME/REPOSITORY.git
+          git push --follow-tags

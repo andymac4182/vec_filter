@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "vec_filter",
+    "vec_filter_derive",
+    "example"
+]
+
+[profile.release]
+opt-level = 3
