@@ -55,8 +55,8 @@ To set the precedence of the operations, use parentheses. Expressions enclosed i
 
 For example:
 
-* ((age >= 25) && (interests in ["hiking"])) || (name == "Alice"): This query will match items where the age is greater than or equal to 25 and the interests contain "hiking", or the name is equal to "Alice".
-* (name == "Alice") || ((age < 30) && (interests in ["cooking"])): This query will match items where the name is equal to "Alice", or the age is less than 30 and the interests contain "cooking".
+* `((age >= 25) && (interests in ["hiking"])) || (name == "Alice")`: This query will match items where the age is greater than or equal to 25 and the interests contain "hiking", or the name is equal to "Alice".
+* `(name == "Alice") || ((age < 30) && (interests in ["cooking"]))`: This query will match items where the name is equal to "Alice", or the age is less than 30 and the interests contain "cooking".
 
 By using parentheses, you can build complex queries that combine multiple conditions with different levels of precedence to achieve precise filtering.
 
