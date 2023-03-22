@@ -1,4 +1,4 @@
-use criterion::{black_box, criterion_group, criterion_main, Criterion, Throughput};
+use criterion::{black_box, criterion_group, criterion_main, Criterion, Throughput, BenchmarkId};
 use vec_filter::{parse_query, Filterable};
 
 #[derive(Debug, Clone, PartialEq, Filterable)]
@@ -9,12 +9,34 @@ pub struct Person {
 }
 
 fn bench_parse_query(c: &mut Criterion) {
-    let query = "((name == \"Alice\") && (interests in [\"hiking\"])) || (age == 20)";
+    let input_strings = vec![
+        "name == \"Alice\"",
+        "name != \"Alice\"",
+        "age == 30",
+        "age != 30",
+        "interests in [\"reading\"]",
+        "interests in [\"cooking\"]",
+        "interests in [\"hiking\"]",
+        "(name == \"Alice\") && (age == 30)",
+        "(name == \"Alice\") || (name == \"Bob\")",
+        "name in [\"Alice\",\"Bob\"]",
+        "interests in \"hiking\"",
+        "(name == \"Alice\") || (name == \"Bob\") || (name == \"Eve\")",
+        "(interests in [\"hiking\"]) && (age == 25)",
+        "((name == \"Alice\") && (interests in [\"hiking\"])) || (age == 20)",
+        "(interests in [\"hiking\"]) && ((age == 20) || (age == 25))",
+        "age > 25",
+        "age < 25",
+        "age >= 25",
+        "age <= 25",
+    ];
     let mut group = c.benchmark_group("parse_query");
-    group.throughput(Throughput::Elements(1));
-    group.bench_function("ips", |b| {
-        b.iter(|| parse_query::<PersonProperties>(black_box(query)))
-    });
+    for query in input_strings.iter() {
+        group.throughput(Throughput::Elements(1));
+        group.bench_with_input(BenchmarkId::from_parameter(query), query, |b, &query| {
+            b.iter(|| parse_query::<PersonProperties>(black_box(query)))
+        });
+    }
     group.finish();
 }
 
