@@ -1,6 +1,6 @@
 [package]
 name = "vec_filter"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2018"
 authors = ["Andrew McClenaghan <andrew.mcclenaghan@gmail.com>"]
 description = "Vec Filter is a Rust library to filter a vector of structs based on a query string. It allows you to specify filter conditions on struct fields with a simple query syntax. The library provides a custom derive macro, `Filterable`, to make your structs filterable with ease."

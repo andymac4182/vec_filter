@@ -5,15 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 0.2.0 (2023-03-22)
+## 0.2.1 (2023-03-22)
 
-Test
+Add doc strings for AST, Move internal methods to extension trait
 
 ### Commit Statistics
 
 <csr-read-only-do-not-edit/>
 
- - 4 commits contributed to the release.
+ - 1 commit contributed to the release.
  - 0 commits were understood as [conventional](https://www.conventionalcommits.org).
  - 0 issues like '(#ID)' were seen in commit messages
 
@@ -24,6 +24,29 @@ Test
 <details><summary>view details</summary>
 
  * **Uncategorized**
+    - Add doc strings for AST, Move internal methods to extension trait ([`4111150`](https://github.com/andymac4182/vec_filter/commit/4111150285b0cb7657a2129fcc5427d01dcfa0aa))
+</details>
+
+## 0.2.0 (2023-03-22)
+
+Test
+
+### Commit Statistics
+
+<csr-read-only-do-not-edit/>
+
+ - 5 commits contributed to the release.
+ - 0 commits were understood as [conventional](https://www.conventionalcommits.org).
+ - 0 issues like '(#ID)' were seen in commit messages
+
+### Commit Details
+
+<csr-read-only-do-not-edit/>
+
+<details><summary>view details</summary>
+
+ * **Uncategorized**
+    - Release vec_filter_derive v0.1.1, vec_filter v0.2.0 ([`d58f77d`](https://github.com/andymac4182/vec_filter/commit/d58f77d1da5e94f1b113f053ab98a52ae35906ce))
     - Adjusting changelogs prior to release of vec_filter_derive v0.1.1, vec_filter v0.2.0 ([`92e6ae6`](https://github.com/andymac4182/vec_filter/commit/92e6ae6a3fa68cf02697b8776106944f3a856a05))
     - Update changelog ([`aed0969`](https://github.com/andymac4182/vec_filter/commit/aed0969236aa011b155bd796fa7d4ba6746e2249))
     - Move tests ([`6cc93ef`](https://github.com/andymac4182/vec_filter/commit/6cc93ef95897d0ce1cdcf994d2b29082ff025d9b))
