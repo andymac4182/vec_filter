@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <csr-read-only-do-not-edit/>
 
- - 4 commits contributed to the release.
+ - 5 commits contributed to the release.
  - 0 commits were understood as [conventional](https://www.conventionalcommits.org).
  - 0 issues like '(#ID)' were seen in commit messages
 
@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <details><summary>view details</summary>
 
  * **Uncategorized**
+    - Adjusting changelogs prior to release of vec_filter_derive v0.1.0, vec_filter v0.1.0 ([`a79bc03`](https://github.com/andymac4182/vec_filter/commit/a79bc03c25dfaf1a19d5c3aae4a5eac0013ab4b6))
     - Add CHANGELOG ([`07262ae`](https://github.com/andymac4182/vec_filter/commit/07262ae1008fe4614a8283220c639cc655c5248b))
     - Fix up cargo.toml ([`01a867e`](https://github.com/andymac4182/vec_filter/commit/01a867eb166309e370450546d680d23dd224e3f4))
     - Add GT, LT, GTE, LTE ([`d2dadc6`](https://github.com/andymac4182/vec_filter/commit/d2dadc6ee37e53e22af5244ca75474668bc250ec))
