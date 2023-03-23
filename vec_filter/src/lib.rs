@@ -3,10 +3,10 @@
 extern crate vec_filter_derive;
 pub use vec_filter_derive::Filterable;
 
-mod ast;    
-mod struct_matcher;
+mod ast;
 mod parsers;
+mod struct_matcher;
 
-pub use ast::{AST, Value};
 pub use crate::struct_matcher::{StructMatcher, StructProperties};
-pub use parsers::{parse_query, ParsePropertyFromString};
+pub use ast::{CompatibilityError, Value, AST};
+pub use parsers::{parse_query, ASTValidationError, FieldNotFound};

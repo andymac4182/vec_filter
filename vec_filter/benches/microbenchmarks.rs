@@ -1,4 +1,4 @@
-use criterion::{black_box, criterion_group, criterion_main, Criterion, Throughput, BenchmarkId};
+use criterion::{black_box, criterion_group, criterion_main, BenchmarkId, Criterion, Throughput};
 use vec_filter::{parse_query, Filterable};
 
 #[derive(Debug, Clone, PartialEq, Filterable)]
@@ -57,15 +57,13 @@ fn bench_apply(c: &mut Criterion) {
         interests: vec!["hiking".to_string(), "painting".to_string()],
     };
 
-    let people = vec![alice.clone(), bob.clone(), carol.clone()];
+    let people = vec![alice, bob, carol];
     let query = "((name == \"Alice\") && (interests in [\"hiking\"])) || (age == 20)";
     let ast = parse_query(query).unwrap();
 
     let mut group = c.benchmark_group("apply");
     group.throughput(Throughput::Elements(3));
-    group.bench_function("ips", |b| {
-        b.iter(|| ast.1.apply(black_box(&people)))
-    });
+    group.bench_function("ips", |b| b.iter(|| ast.apply(black_box(&people))));
     group.finish();
 }
 

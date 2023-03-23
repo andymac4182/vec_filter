@@ -8,8 +8,9 @@ pub struct Person {
 }
 
 fn main() {
-    let input = "name == \"Alice\"";
+    let input = "(age > 25) && (name == \"Alice\") || age == 3";
     let result = parse_query(input);
+    println!("AST: {:?}", result.as_ref().unwrap());
 
     let people = vec![
         Person {
@@ -30,7 +31,7 @@ fn main() {
     ];
 
     match result {
-        Ok((_, ast)) => {
+        Ok(ast) => {
             let filtered_people: Vec<Person> = ast.apply(&people);
             println!("Filtered people: {:?}", filtered_people);
         }

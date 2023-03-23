@@ -31,6 +31,7 @@ fn impl_filterable(ast: &DeriveInput) -> TokenStream {
     let mut property_variants_lower_str = Vec::new();
     let mut get_property_value_match_arms = Vec::new();
     let mut get_property_enum_match_arms = Vec::new();
+    let mut get_value_type_match_arms = Vec::new();
 
     for field in fields {
         let field_name = field.ident.as_ref().unwrap();
@@ -49,6 +50,38 @@ fn impl_filterable(ast: &DeriveInput) -> TokenStream {
         let property_enum_match_arm =
             quote! { #field_name_str_lower => Ok(#properties_name::#variant_ident), };
         get_property_enum_match_arms.push(property_enum_match_arm);
+
+        let field_ty = match &field.ty {
+            syn::Type::Path(type_path) => {
+                let segment = &type_path.path.segments.last().unwrap();
+                let ident = &segment.ident;
+                let arguments = match &segment.arguments {
+                    syn::PathArguments::AngleBracketed(args) => {
+                        let mut formatted_args = Vec::new();
+                        for arg in &args.args {
+                            if let syn::GenericArgument::Type(ty) = arg {
+                                let ty_str = quote! { #ty }.to_string();
+                                formatted_args.push(ty_str);
+                            }
+                        }
+                        format!("<{}>", formatted_args.join(", "))
+                    }
+                    _ => "".to_string(),
+                };
+                format!("{}{}", ident, arguments)
+            }
+            _ => panic!("Unsupported field type"),
+        };
+
+        let default_value: syn::Expr = syn::parse_str(&format!(
+            "<{} as core::default::Default>::default()",
+            field_ty
+        ))
+        .unwrap();
+        let get_value_type = quote! { vec_filter::Value::wrap(#default_value) };
+        let get_value_type_match_arm =
+            quote! { #properties_name::#variant_ident => #get_value_type, };
+        get_value_type_match_arms.push(get_value_type_match_arm);
     }
 
     let gen = quote! {
@@ -64,15 +97,32 @@ fn impl_filterable(ast: &DeriveInput) -> TokenStream {
                     #(#property_variants_lower_str),*
                 ]
             }
+
+            fn get_value_type(&self) -> vec_filter::Value {
+                match *self {
+                    #(#get_value_type_match_arms)*
+                    _ => unimplemented!("not yet implemented"),
+                }
+            }
         }
 
         impl std::str::FromStr for #properties_name {
-            type Err = vec_filter::ParsePropertyFromString;
+            type Err = vec_filter::FieldNotFound;
 
-            fn from_str(property_string: &str) -> Result<Self, vec_filter::ParsePropertyFromString> {
+            fn from_str(property_string: &str) -> Result<Self, vec_filter::FieldNotFound> {
                 match property_string.to_lowercase().as_str() {
                     #(#get_property_enum_match_arms)*
-                    _ => Err(vec_filter::ParsePropertyFromString::ItemNotFound)
+                    _ => Err(vec_filter::FieldNotFound::new(property_string))
+                }
+            }
+        }
+
+        impl std::fmt::Display for #properties_name {
+            fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+                match self {
+                    #(
+                        #properties_name::#property_variants => write!(f, "{}", stringify!(#property_variants)),
+                    )*
                 }
             }
         }
@@ -86,6 +136,13 @@ fn impl_filterable(ast: &DeriveInput) -> TokenStream {
             }
         }
     };
+
+    use std::io::Write;
+    let my_string_output = &gen.to_string();
+    let mut file = std::fs::File::create("/Users/andrewmcclenaghan/temp/my_macro_output.rs")
+        .expect("Unable to create file");
+    file.write_all(my_string_output.as_bytes())
+        .expect("Unable to write file");
 
     gen.into()
 }

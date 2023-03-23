@@ -38,17 +38,46 @@ struct Person {
 ```
 
 ### Query Syntax
-Vec Filter supports the following operators:
 
--   `==`: Equals
--   `!=`: Not equals
--   `>`: Greater Than
--   `>=`: Greater than or equal to
--   `<`: Less than
--   `<=`: Less than or equal to
--   `in`: Contains (for strings and vectors of strings)
+This section describes the string query format that can be parsed by the library. The string queries are composed of a series of expressions that represent operations, values, and logical connectors. Expressions can be combined using parentheses to create more complex queries.
 
-You can also use logical operators `&&` (AND) and `||` (OR) to combine conditions. 
+#### Operations
+
+*   `==`: Equals
+*   `!=`: Not equals
+*   `>`: Greater than
+*   `>=`: Greater than or equal to
+*   `<`: Less than
+*   `<=`: Less than or equal to
+*   `contains`: Contains substring
+*   `startswith`: Starts with substring
+*   `endswith`: Ends with substring
+*   `regexmatch`: Matches regex pattern
+*   `in`: Checks if a value is in a list of values
+
+#### Values
+
+Values can be of the following types:
+
+*   String: Enclosed in double quotes, e.g. `"hello"`
+*   Integer: A sequence of digits, e.g. `42`
+*   List of strings: Enclosed in square brackets, separated by commas, e.g. `["apple", "banana", "cherry"]`
+*   List of integers: Enclosed in square brackets, separated by commas, e.g. `[1, 2, 3]`
+
+#### Logical Connectors
+
+*   `&&`: Logical AND
+*   `||`: Logical OR
+*   `!`: Logical NOT (used with parentheses)
+
+#### Examples
+
+*   `field1 == "value1"`: field1 equals "value1"
+*   `(field1 != "value1") && (field2 > 42)`: field1 is not equal to "value1" and field2 is greater than 42
+*   `(field1 contains "substr") || (field2 < 10)`: field1 contains the substring "substr" or field2 is less than 10
+*   `!(field1 >= 100)`: field1 is not greater than or equal to 100
+*   `field1 in ["apple", "banana"]`: field1 is either "apple" or "banana"
+*   `((field1 == "value1") || (field1 == "value2")) && (field2 <= 20)`: field1 is either "value1" or "value2", and field2 is less than or equal to 20
 
 #### Parentheses
 To set the precedence of the operations, use parentheses. Expressions enclosed in parentheses will be evaluated first. If you want to group conditions, you can use parentheses to create more complex queries.
@@ -60,17 +89,11 @@ For example:
 
 By using parentheses, you can build complex queries that combine multiple conditions with different levels of precedence to achieve precise filtering.
 
-#### Query Examples
-* `name == "John Doe"`
-* `age != 30`
-* `age == 25 && name != "Alice"`
-* `role in ["admin", "manager"]`
-* `salary > 50000 || role == "developer"`
-* `(name == "Alice" || name == "Bob") && age > 20`
-* `age < 18 && (role == "intern" || role == "student")`
-* `email == "johndoe@example.com" || (role == "manager" && department == "HR")`
-* `age >= 30 && (role in ["team_lead", "manager"] || department != "IT")`
-* `((name == "Alice" || name == "Bob") && department == "Sales") || (age > 35 && role == "manager")`
+#### Notes
+
+*   Spaces are allowed between elements but are not required.
+*   The field names must be valid Rust identifiers.
+*   The parser is case-sensitive; field names and string values must match the case exactly.
 
 ### Example
 
