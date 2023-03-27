@@ -5,6 +5,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.2.2 (2023-03-27)
+
+Add new AST options
+
+### New Features
+
+ - <csr-id-2b24b0212229813378056bd5c77abc86ff026d07/> Add multiple input strings for parse_query benchmark
+ - <csr-id-5eb205ddc9b9191c0baf07ef98f3858947a03364/> Add microbenchmarks for parse_query and apply
+
+### Commit Statistics
+
+<csr-read-only-do-not-edit/>
+
+ - 3 commits contributed to the release over the course of 2 calendar days.
+ - 2 days passed between releases.
+ - 2 commits were understood as [conventional](https://www.conventionalcommits.org).
+ - 0 issues like '(#ID)' were seen in commit messages
+
+### Commit Details
+
+<csr-read-only-do-not-edit/>
+
+<details><summary>view details</summary>
+
+ * **Uncategorized**
+    - WIP ([`beba1be`](https://github.com/andymac4182/vec_filter/commit/beba1be2d75a184657abaf5d52110d1680e02000))
+    - Add multiple input strings for parse_query benchmark ([`2b24b02`](https://github.com/andymac4182/vec_filter/commit/2b24b0212229813378056bd5c77abc86ff026d07))
+    - Add microbenchmarks for parse_query and apply ([`5eb205d`](https://github.com/andymac4182/vec_filter/commit/5eb205ddc9b9191c0baf07ef98f3858947a03364))
+</details>
+
 ## 0.2.1 (2023-03-22)
 
 Add doc strings for AST, Move internal methods to extension trait
@@ -13,7 +43,7 @@ Add doc strings for AST, Move internal methods to extension trait
 
 <csr-read-only-do-not-edit/>
 
- - 1 commit contributed to the release.
+ - 2 commits contributed to the release.
  - 0 commits were understood as [conventional](https://www.conventionalcommits.org).
  - 0 issues like '(#ID)' were seen in commit messages
 
@@ -24,6 +54,7 @@ Add doc strings for AST, Move internal methods to extension trait
 <details><summary>view details</summary>
 
  * **Uncategorized**
+    - Release vec_filter v0.2.1 ([`fabe7c8`](https://github.com/andymac4182/vec_filter/commit/fabe7c823ab4aa45421089c8f6774edf9c6301a8))
     - Add doc strings for AST, Move internal methods to extension trait ([`4111150`](https://github.com/andymac4182/vec_filter/commit/4111150285b0cb7657a2129fcc5427d01dcfa0aa))
 </details>
 

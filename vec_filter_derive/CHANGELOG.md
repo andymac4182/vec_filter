@@ -5,15 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 0.1.1 (2023-03-22)
+## 0.1.2 (2023-03-27)
 
-Test
+Add new AST options
 
 ### Commit Statistics
 
 <csr-read-only-do-not-edit/>
 
- - 3 commits contributed to the release.
+ - 1 commit contributed to the release.
+ - 2 days passed between releases.
  - 0 commits were understood as [conventional](https://www.conventionalcommits.org).
  - 0 issues like '(#ID)' were seen in commit messages
 
@@ -24,6 +25,29 @@ Test
 <details><summary>view details</summary>
 
  * **Uncategorized**
+    - WIP ([`beba1be`](https://github.com/andymac4182/vec_filter/commit/beba1be2d75a184657abaf5d52110d1680e02000))
+</details>
+
+## 0.1.1 (2023-03-22)
+
+Test
+
+### Commit Statistics
+
+<csr-read-only-do-not-edit/>
+
+ - 4 commits contributed to the release.
+ - 0 commits were understood as [conventional](https://www.conventionalcommits.org).
+ - 0 issues like '(#ID)' were seen in commit messages
+
+### Commit Details
+
+<csr-read-only-do-not-edit/>
+
+<details><summary>view details</summary>
+
+ * **Uncategorized**
+    - Release vec_filter_derive v0.1.1, vec_filter v0.2.0 ([`d58f77d`](https://github.com/andymac4182/vec_filter/commit/d58f77d1da5e94f1b113f053ab98a52ae35906ce))
     - Adjusting changelogs prior to release of vec_filter_derive v0.1.1, vec_filter v0.2.0 ([`92e6ae6`](https://github.com/andymac4182/vec_filter/commit/92e6ae6a3fa68cf02697b8776106944f3a856a05))
     - Update changelog ([`aed0969`](https://github.com/andymac4182/vec_filter/commit/aed0969236aa011b155bd796fa7d4ba6746e2249))
     - Adjusting changelogs prior to release of vec_filter v0.2.0 ([`2b6deef`](https://github.com/andymac4182/vec_filter/commit/2b6deef2ea9635ca5e1b3e1806a67d030faf2be8))
