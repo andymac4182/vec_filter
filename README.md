@@ -5,12 +5,12 @@ Vec Filter is a Rust library to filter a vector of structs based on a query stri
 
 ## Table of Contents
 
--   [Installation](https://chat.openai.com/chat?model=gpt-4#installation)
--   [Usage](https://chat.openai.com/chat?model=gpt-4#usage)
-    -   [Deriving Filterable](https://chat.openai.com/chat?model=gpt-4#deriving-filterable)
-    -   [Query Syntax](https://chat.openai.com/chat?model=gpt-4#query-syntax)
-    -   [Example](https://chat.openai.com/chat?model=gpt-4#example)
--   [License](https://chat.openai.com/chat?model=gpt-4#license)
+-   [Installation](#installation)
+-   [Usage](#usage)
+    -   [Deriving Filterable](#deriving-filterable)
+    -   [Query Syntax](#query-syntax)
+    -   [Example](#example)
+-   [License](#license)
 
 ## Installation
 
